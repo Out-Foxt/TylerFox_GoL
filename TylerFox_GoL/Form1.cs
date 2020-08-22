@@ -143,14 +143,14 @@ namespace TylerFox_GoL
                     if (universe[x, y] && (count == 2 || count == 3))
                         scratchPad[x, y] = true;
                     if (universe[x, y] && count > 3)
-                        scratchPad[x, y] = false;
+                        scratchPad[x, y] = false; 
                     if (!universe[x, y] && count == 3)
                         scratchPad[x, y] = true;
 
 
                 }//end y for
             }//end x for
-
+             
             // Increment generation count
             generations++;
 
