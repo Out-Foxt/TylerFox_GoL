@@ -143,15 +143,15 @@ namespace TylerFox_GoL
                     if (universe[x, y] && (count == 2 || count == 3))
                         scratchPad[x, y] = true;
                     if (universe[x, y] && count > 3)
-                        scratchPad[x, y] = false; 
+                        scratchPad[x, y] = false;
                     if (!universe[x, y] && count == 3)
                         scratchPad[x, y] = true;
 
 
                 }//end y for
             }//end x for
-             
-            // Increment generation count
+
+            // Increment generation count 
             generations++;
 
             // Update status strip generations
@@ -319,6 +319,31 @@ namespace TylerFox_GoL
 
             // Tell Windows you need to repaint
             graphicsPanel1.Invalidate();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        private void colorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripStatusLabelGenerations_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
