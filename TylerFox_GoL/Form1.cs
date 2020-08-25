@@ -6,6 +6,8 @@ namespace TylerFox_GoL
 {
     public partial class Form1 : Form
     {
+        int width = 10;
+        int height = 10;
         // The universe array
         bool[,] universe = new bool[10, 10];
         //scratchpad
@@ -328,7 +330,18 @@ namespace TylerFox_GoL
 
         private void colorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //initialize dialog box
+            ColorDialog cldl = new ColorDialog();
 
+            //set default
+            cldl.Color = graphicsPanel1.BackColor;
+
+            //if OK
+            if (DialogResult.OK == cldl.ShowDialog())
+            {
+                graphicsPanel1.BackColor = cldl.Color;
+            }
+            
         }
 
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
