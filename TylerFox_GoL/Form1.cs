@@ -394,5 +394,27 @@ namespace TylerFox_GoL
                 graphicsPanel1.Invalidate();
             }
         }
+
+        private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //instancinating
+            ModalDialog mod = new ModalDialog();
+            if (DialogResult.OK == mod.ShowDialog())
+            {
+                int x = 0;
+
+            }
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //instancinating
+            ModalDialog mod = new ModalDialog();
+            if (DialogResult.OK == mod.ShowDialog())
+            {
+                int x = 0;
+
+            }
+        }
     }
 }
