@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1OK = new System.Windows.Forms.Button();
-            this.button2Cancel = new System.Windows.Forms.Button();
+            this.buttonOK = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.HeightNumericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,23 +41,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntervalNumericUpDown3)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1OK
+            // buttonOK
             // 
-            this.button1OK.Location = new System.Drawing.Point(31, 398);
-            this.button1OK.Name = "button1OK";
-            this.button1OK.Size = new System.Drawing.Size(147, 40);
-            this.button1OK.TabIndex = 0;
-            this.button1OK.Text = "Ok";
-            this.button1OK.UseVisualStyleBackColor = true;
+            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonOK.Location = new System.Drawing.Point(31, 398);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(147, 40);
+            this.buttonOK.TabIndex = 3;
+            this.buttonOK.Text = "Ok";
+            this.buttonOK.UseVisualStyleBackColor = true;
             // 
-            // button2Cancel
+            // buttonCancel
             // 
-            this.button2Cancel.Location = new System.Drawing.Point(219, 398);
-            this.button2Cancel.Name = "button2Cancel";
-            this.button2Cancel.Size = new System.Drawing.Size(147, 40);
-            this.button2Cancel.TabIndex = 1;
-            this.button2Cancel.Text = "Cancel";
-            this.button2Cancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(203, 398);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(147, 40);
+            this.buttonCancel.TabIndex = 4;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // HeightNumericUpDown1
             // 
@@ -69,7 +72,7 @@
             0});
             this.HeightNumericUpDown1.Name = "HeightNumericUpDown1";
             this.HeightNumericUpDown1.Size = new System.Drawing.Size(75, 26);
-            this.HeightNumericUpDown1.TabIndex = 2;
+            this.HeightNumericUpDown1.TabIndex = 0;
             this.HeightNumericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label1
@@ -97,12 +100,12 @@
             this.WidthNumericUpDown2.Location = new System.Drawing.Point(399, 119);
             this.WidthNumericUpDown2.Name = "WidthNumericUpDown2";
             this.WidthNumericUpDown2.Size = new System.Drawing.Size(75, 26);
-            this.WidthNumericUpDown2.TabIndex = 5;
+            this.WidthNumericUpDown2.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(199, 169);
+            this.label3.Location = new System.Drawing.Point(199, 179);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(175, 20);
             this.label3.TabIndex = 6;
@@ -110,15 +113,17 @@
             // 
             // IntervalNumericUpDown3
             // 
-            this.IntervalNumericUpDown3.Location = new System.Drawing.Point(399, 169);
+            this.IntervalNumericUpDown3.Location = new System.Drawing.Point(399, 179);
             this.IntervalNumericUpDown3.Name = "IntervalNumericUpDown3";
             this.IntervalNumericUpDown3.Size = new System.Drawing.Size(75, 26);
-            this.IntervalNumericUpDown3.TabIndex = 7;
+            this.IntervalNumericUpDown3.TabIndex = 2;
             // 
             // ModalDialog
             // 
+            this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.IntervalNumericUpDown3);
             this.Controls.Add(this.label3);
@@ -126,10 +131,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.HeightNumericUpDown1);
-            this.Controls.Add(this.button2Cancel);
-            this.Controls.Add(this.button1OK);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ModalDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModalDialog";
             this.Load += new System.EventHandler(this.ModalDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HeightNumericUpDown1)).EndInit();
@@ -142,8 +148,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1OK;
-        private System.Windows.Forms.Button button2Cancel;
+        private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.NumericUpDown HeightNumericUpDown1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
