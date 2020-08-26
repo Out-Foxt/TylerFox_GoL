@@ -108,37 +108,32 @@ namespace TylerFox_GoL
                     if (universe[xCheck, yCheck] == true) count++;
                 }//end xOffset
             }//end yOffset
+            
             return count;
         }//end count neighbors
 
         // Calculate the next generation of cells
         private void NextGeneration()
         {
+            //set font
+            Font font = new Font("Arial", 20f);
+            //set format to center
+            StringFormat stringFormat = new StringFormat();
+            stringFormat.Alignment = StringAlignment.Center;
+            stringFormat.LineAlignment = StringAlignment.Center;
+            //define
+            Rectangle rect = new Rectangle(0, 0, 100, 100);
+            //initialize neighbor variable
+            int neighbors = 8;
+            //print neighbor count
+            //e.Graphics.DrawString(neighbors.ToString(), font, Brushes.Black, rect, stringFormat);
+
             for (int x = 0; x < universe.GetLength(0); x++)
             {
                 for (int y = 0; y < universe.GetLength(1); y++)
                 {
                     int count = CountNeighbors(x, y);
-                    /*
-                    if (universe[x, y])
-                    {
-                        if (count == 2 || count == 3)
-                        {
-                            scratchPad[x, y] = true;
-                        }
-                        if (count < 2 || count > 3)
-                        {
-                            scratchPad[x, y] = false;
-                        }
-                    }
-                    else
-                    {
-                        if (count == 3)
-                        {
-                            scratchPad[x, y] = true;
-                        }
-                    }*/ //looks prettier not done implementing 
-
+                    
                     scratchPad[x, y] = false;
                     if (universe[x, y] && count < 2)
                         scratchPad[x, y] = false;
@@ -181,7 +176,7 @@ namespace TylerFox_GoL
             int cellWidth = graphicsPanel1.ClientSize.Width / universe.GetLength(0);
             // CELL HEIGHT = WINDOW HEIGHT / NUMBER OF CELLS IN Y
             int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
-
+            
             // A Pen for drawing the grid lines (color, width)
             Pen gridPen = new Pen(gridColor, 1);
 
@@ -234,7 +229,7 @@ namespace TylerFox_GoL
 
                 // Toggle the cell's state
                 universe[x, y] = !universe[x, y];
-
+                
                 // Tell Windows you need to repaint
                 graphicsPanel1.Invalidate();
             }
@@ -330,17 +325,7 @@ namespace TylerFox_GoL
 
         private void colorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //initialize dialog box
-            ColorDialog cldl = new ColorDialog();
-
-            //set default
-            cldl.Color = graphicsPanel1.BackColor;
-
-            //if OK
-            if (DialogResult.OK == cldl.ShowDialog())
-            {
-                graphicsPanel1.BackColor = cldl.Color;
-            }
+            
             
         }
 
@@ -357,6 +342,57 @@ namespace TylerFox_GoL
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BackgroundStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //initialize dialog box
+            ColorDialog cldl = new ColorDialog();
+
+            //set default
+            cldl.Color = graphicsPanel1.BackColor;
+
+            //if OK
+            if (DialogResult.OK == cldl.ShowDialog())
+            {
+                graphicsPanel1.BackColor = cldl.Color;
+            }
+        }
+
+        private void gridToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //initialize dialog box
+            ColorDialog cldl = new ColorDialog();
+
+            //set default
+            cldl.Color = gridColor;
+
+            //if OK
+            if (DialogResult.OK == cldl.ShowDialog())
+            {
+                gridColor = cldl.Color;
+
+                // Tell Windows you need to repaint
+                graphicsPanel1.Invalidate();
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //initialize dialog box
+            ColorDialog cldl = new ColorDialog();
+
+            //set default
+            cldl.Color = cellColor;
+
+            //if OK
+            if (DialogResult.OK == cldl.ShowDialog())
+            {
+                cellColor = cldl.Color;
+
+                // Tell Windows you need to repaint
+                graphicsPanel1.Invalidate();
+            }
         }
     }
 }
