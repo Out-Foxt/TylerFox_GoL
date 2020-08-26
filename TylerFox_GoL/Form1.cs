@@ -4,10 +4,21 @@ using System.Windows.Forms;
 
 namespace TylerFox_GoL
 {
+    class GraphicPanel : Panel
+    {
+        //default constructor
+        public GraphicPanel()
+        {
+            //Turn on dbl buff
+            this.DoubleBuffered = true;
+
+            //repaint when resized
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+
+        }//end constructor
+    }//end class
     public partial class Form1 : Form
     {
-        int width = 10;
-        int height = 10;
         // The universe array
         bool[,] universe = new bool[10, 10];
         //scratchpad
@@ -28,7 +39,7 @@ namespace TylerFox_GoL
             InitializeComponent();
 
             // Setup the timer
-            timer.Interval = 100; // milliseconds
+            timer.Interval = 20; // milliseconds
             timer.Tick += Timer_Tick;
             timer.Enabled = false; // start timer running
         }
@@ -78,6 +89,7 @@ namespace TylerFox_GoL
             int xLen = universe.GetLength(0);
             int yLen = universe.GetLength(01);
 
+
             for (int yOffset = -1; yOffset <= 1; yOffset++)
             {
                 for (int xOffset = -1; xOffset <= 1; xOffset++)
@@ -115,19 +127,6 @@ namespace TylerFox_GoL
         // Calculate the next generation of cells
         private void NextGeneration()
         {
-            //set font
-            Font font = new Font("Arial", 20f);
-            //set format to center
-            StringFormat stringFormat = new StringFormat();
-            stringFormat.Alignment = StringAlignment.Center;
-            stringFormat.LineAlignment = StringAlignment.Center;
-            //define
-            Rectangle rect = new Rectangle(0, 0, 100, 100);
-            //initialize neighbor variable
-            int neighbors = 8;
-            //print neighbor count
-            //e.Graphics.DrawString(neighbors.ToString(), font, Brushes.Black, rect, stringFormat);
-
             for (int x = 0; x < universe.GetLength(0); x++)
             {
                 for (int y = 0; y < universe.GetLength(1); y++)
@@ -196,16 +195,37 @@ namespace TylerFox_GoL
                     cellRect.Width = cellWidth;
                     cellRect.Height = cellHeight;
 
+                    //set font
+                    Font font = new Font("Arial", 15f);
+
+                    //set format to center
+                    StringFormat stringFormat = new StringFormat();
+                    stringFormat.Alignment = StringAlignment.Center;
+                    stringFormat.LineAlignment = StringAlignment.Center;
+                    
+                    //initialize neighbor variable
+                    int neighbors = CountNeighbors(x, y);
+                  
+
                     // Fill the cell with a brush if alive
                     if (universe[x, y] == true)
                     {
                         e.Graphics.FillRectangle(cellBrush, cellRect);
                     }
-
+                    
                     // Outline the cell with a pen
                     e.Graphics.DrawRectangle(gridPen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
+
+                    //check to not print 0's
+                    if (neighbors > 0)
+                    {
+                        //print neighbor count
+                        e.Graphics.DrawString(neighbors.ToString(), font, Brushes.Black, cellRect, stringFormat);
+                    }
+                    
                 }
             }
+
 
             // Cleaning up pens and brushes
             gridPen.Dispose();
@@ -217,6 +237,7 @@ namespace TylerFox_GoL
             // If the left mouse button was clicked
             if (e.Button == MouseButtons.Left)
             {
+
                 // Calculate the width and height of each cell in pixels
                 int cellWidth = graphicsPanel1.ClientSize.Width / universe.GetLength(0);
                 int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
@@ -229,12 +250,13 @@ namespace TylerFox_GoL
 
                 // Toggle the cell's state
                 universe[x, y] = !universe[x, y];
-                
+
                 // Tell Windows you need to repaint
                 graphicsPanel1.Invalidate();
             }
         }
 
+        
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             timer.Start();//start
@@ -416,5 +438,7 @@ namespace TylerFox_GoL
 
             }
         }
+        
     }
+    
 }

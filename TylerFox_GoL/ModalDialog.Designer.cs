@@ -73,6 +73,11 @@
             this.HeightNumericUpDown1.Name = "HeightNumericUpDown1";
             this.HeightNumericUpDown1.Size = new System.Drawing.Size(75, 26);
             this.HeightNumericUpDown1.TabIndex = 0;
+            this.HeightNumericUpDown1.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             this.HeightNumericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label1
@@ -101,6 +106,11 @@
             this.WidthNumericUpDown2.Name = "WidthNumericUpDown2";
             this.WidthNumericUpDown2.Size = new System.Drawing.Size(75, 26);
             this.WidthNumericUpDown2.TabIndex = 1;
+            this.WidthNumericUpDown2.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
@@ -117,6 +127,12 @@
             this.IntervalNumericUpDown3.Name = "IntervalNumericUpDown3";
             this.IntervalNumericUpDown3.Size = new System.Drawing.Size(75, 26);
             this.IntervalNumericUpDown3.TabIndex = 2;
+            this.IntervalNumericUpDown3.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.IntervalNumericUpDown3.ValueChanged += new System.EventHandler(this.IntervalNumericUpDown3_ValueChanged);
             // 
             // ModalDialog
             // 

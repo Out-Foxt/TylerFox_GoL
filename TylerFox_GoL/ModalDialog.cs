@@ -36,5 +36,10 @@ namespace TylerFox_GoL
         {
 
         }
+
+        private void IntervalNumericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
